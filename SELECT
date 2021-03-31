@@ -1,0 +1,60 @@
+SELECT문
+
+SELECT문 = 
+특정 테이블의 데이터를 가져오는 역할 SQL에서 가장많이 쓰임
+
+SELECT의 원뜻 = 선택하다, 선발하다.
+
+=========================================================
+SELECT - COLUMN1	//추출대상 컬럼
+	COLUMN2	//만약 테이블의 모든 컬럼을 다 보고 싶다면 '*'
+	.중략
+FROM -	
+	TABLE_NAME	//추출 대상 테이블명 입력	
+;			//세미 콜론으로 끝남
+=========================================================
+
+SQL블럭을 지정후 CTRL + ENTER 하면 해당 데이터가 출력됨(OUTPUT)
+
+SELECT * FROM CUTOMER ;
+//CUTOMER의 모든 데이터를 출력한다.
+
+SQL블럭을 지정후 CTRL + SHIFT + E 하면 Execution plan(실행계획)이 나온다.
+=========================================================
+지정한 컬럼을 조회 하는법
+
+SELECT 
+	FIRST_NAME	//지정한 컬럼을 조회한다.
+	,LAST_NAME
+	,EMAIL
+FROM
+	CUSTOMER	//테이블명을 지정한다.
+;
+
+SELCT FIRST_NAME, LAST_NAME , EMAIL FROM CUSTOMER ;
+//블럭에 해당하는 데이터에서 FIRST_NAME과 LAST_NAME과 EMAIL만 특정하여 출력한다.
+
+눈으로 해당 SELECT문을 읽을때 FROM(1)인  CUTOMER(2)에서 SELECT(3)고른다. 
+FIRST_NAME, LAST_NAME , EMAIL(4)을 순서로 읽으면 된다.
+
+============================================================
+
+만약 두개 이상의 같은 테이블을 불러오려면
+
+select --3
+		A.first_NAME--4
+		, A.LAST_NAME 
+		, A.EMAIL 
+from --1
+		customer A --2
+;	
+
+ALIAS 를 사용하여 코드를 구분 해준다.
+ALIAS -> 코드의 가독성이 좋아진다. -> SQL의 성능에도 지장을 준다.
+
+DBMS -> 기본적으로 SQL에는 옵티마이저 가 있다(최적화기) -> SQL을 어떻게하면 가장 빠르게 저비용으로
+실행 할수 있는가 ALIAS를 사용하면 됨
+
+
+
+
