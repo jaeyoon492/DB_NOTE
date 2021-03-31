@@ -1,0 +1,93 @@
+SELECT DISTINCT문법
+
+SELECT 시 DISTINCT를 사용하면 중복값을 제외한 결과값이 출력된다. 즉 같은 결과의 행이라면 중복을 제거할
+수 있다.
+
+예를 들어 1번행에 A가 있고 2번행에 A 가 있으면 2번행의 A는 지우고 1번 행의 A만 보여준다.
+
+다른 예를 하나 더 들면 1 = A,B , 2 = A,B , 3 = A,C 면 2번행을 지우고 1번과 3번 행만 결과로 보여준다. 
+
+SELECT DISTINCT 문법
+--------------------------------------------------------------
+
+SELECT
+
+	DISTINCT COLUMN_1		//COLUMN_1의 값이 중복 값 존재시 중복 값을 제거
+
+FROM TABLE_NAME;
+
+-----------------------------------------------------------------------------------------------------
+
+SELECT
+
+	DISTINCT COLUMN_1, COLUMN_2	//COLUMN_1 + COLUMN_2의 값이 중복 값 존재 시 중복 값을 제거
+
+FROM TABLE_NAME;
+
+-------------------------------------------------------------------------------------------------------
+
+SELECT
+
+	DISTINCT COLUMN_1, COLUMN_2	//COLUMN_1 + COLUMN_2의 값이 중복 값 존재 시 중복 값을 제거
+
+FROM TABLE_NAME
+ORDER BY COLUMN_1, COLUMN_2;		//결과를 명확하게 하기 위해 ORDER_BY 절 사용(중복이 제거된 집합)
+
+---------------------------------------------------------------------------------------------------------
+
+SELECT DISTINCT - DISTINCT사용 + 컬럼 한 개
+
+SELECT
+	DISTINCT BCOLOR			//BCOLOR 컬럼의 값을 출력시 중복된 행을 제거함
+	
+FROM
+	T1 
+	
+ORDER BY
+	BCOLOR 				//중복이 제거된 BCOLOR 컴럼 값 기준으로 정렬함
+;
+
+//결괏값 : BLUE, GREEN , RED 		// ORDER BY문 때문에 B가 먼저 나온다.
+
+----------------------------------------------------------------------------------------------------------
+
+SELECT DISTINCT 실습 - DISTINCT사용 + 컬럼 두 개
+
+SELECT
+	DISTINCT BCOLOR, FCOLOR		//BCOLOR + FCOLOR 컬럼의 값을 출력 시 중복된 행을 제거함
+FROM
+	T1
+ORDER BY
+	BCOLOR, FCOLOR;			//중복이 제거된 BCOLOR + FCOLOR 컬럼 값 기준으로 정렬함
+
+-------------------------------------------------------------------------------------------------------------
+
+SELECT DISTINCT 실습 - DISTINCT사용 + 컬럼 두 개 + ON사용
+
+SELECT
+	DISTINCT ON (BCOLOR) BCOLOR	//BCOLOR 컬럼 값 기준 중복 제거함
+	, FCOLOR				//FCOLOR 컬럼 값은 단 한 개 값 만을 보여줌
+FROM
+	T1
+ORDER BY
+	BCOLOR, FCOLOR;
+
+/*BCOLOR 기준으로 중복을 제거 하니  예를 들어 BCOLOR에 있는 RED중 하나만 남기고 남은 RED는 다 없앤다 
+다만 FCOLOR는 ORDER BY문 때문에 가장 1번 순서인 BLUE가 남게 되고 결과로 RED, BLUE를 제외하고 BCOLOR에 
+존재하는 모든 RED는 사라진다.*/
+
+---------------------------------------------------------------------------------------------------------------
+
+SELECT DISTINCT실습 - DISTINCT 사용 + 컬럼 두 개 + ON사용 + DESC정렬
+
+SELECT
+	DISTINCT ON(BCOLOR) BCOLOR	//BCOLOR컬럼 값 기준 중복 제거함
+	,FCOLOR				//FCOLOR컬럼 값은 단 한 개 값 만을 보여줌
+FROM
+	T1
+ORDER BY
+	BCOLOR, FCOLOR DESC;		//FCOLOR 컬럽 값을 보여 줄 때 내림차순 정렬함
+
+/* ORDER BY시 NULL이 가장 우선이기 때문에 RED의 중복을 없앨시 FCOLOR엔 NULL값이 남는다.
+ */
+
