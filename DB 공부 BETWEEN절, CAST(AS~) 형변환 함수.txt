@@ -1,0 +1,36 @@
+BETWEEN 연산자
+
+특정 집합에서 어떠한 컬럼의 값이 특정 범위안에 들어가는 집합을 출력하는 연산자.
+
+--------------------------------------------------------------------------------------------
+
+BETWEEN 연산자 문법
+
+//COLUMN_NAME 컬럼의 값이 VALUE_A와 VALUE_B 사이에 있는 집합을 출력한다.
+즉 COLUMN_NAME은 VALUE_A이상 VALU_B 이하이다.
+
+SELECT 
+	*
+FROM
+	TABLE_NAME
+WHERE
+	COLUMN_NAME
+BETWEEN 
+	VALUE_A AND VALUE_B; 
+
+--------------------------------------------------------------------------------------------
+
+NOT BETWEEN연산자 문법
+
+//COLUMN_NAME 컬럼의 값이 VALUE_A와 VALUE_B 사이에 있지 않은 집합을 출력한다.
+즉 COLUMN_NAME은 VALUE_A 초과 (혹은) VALUE_B미만이다.
+
+SLELCT
+	*
+FROM
+	TABLE_NAME
+WHERE
+	COLUMN_NAME
+NOT BETWEEN
+	VALUE_A AND VALUE_B;
+
